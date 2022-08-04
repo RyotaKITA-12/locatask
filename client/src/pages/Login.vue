@@ -13,17 +13,13 @@
             <br>
             <div class="input-container">
                 <label for="password" class="text-secondary"><b>パスワード</b></label>
-                <input id="password" v-model="password" type="password" class="form-control" placeholder="Password" required>
+                <input id="password" v-model="password" type="password" class="form-control" placeholder="Password"
+                    required>
             </div>
             <br>
             <br>
             <br>
             <button class="w-50 btn btn-lg btn-primary" type="submit">LOG IN</button>
-            <br>
-            <br>
-            <div class="mb-2">
-                <router-link to="/forgot">パスワードを忘れた</router-link>
-            </div>
         </form>
     </main>
 </template>

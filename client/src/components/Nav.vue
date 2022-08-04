@@ -4,7 +4,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <router-link to="/home" class="nav-link">
-                        <h2>LocaTASK</h2>
+                        <h2>　LocaTASK　</h2>
                     </router-link>
                 </li>
             </ul>
@@ -20,7 +20,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <router-link to="/" class="nav-link">
-                        <h2>LocaTASK</h2>
+                        <h2>　LocaTASK　</h2>
                     </router-link>
                 </li>
             </ul>
@@ -41,7 +41,23 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+
 export default {
     name: "Nav",
+    setup() {
+        const store = useStore()
+        const router = useRouter()
+        const auth = computed(() => store.state.auth)
+        const logout = async () => {
+            await axios.post('logout', {})
+            store.dispatch('setAuth', false)
+            await router.push('/login')
+        }
+        return { auth, logout }
+    }
 }
 </script>
