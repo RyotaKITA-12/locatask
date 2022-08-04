@@ -110,9 +110,7 @@ func Logout(c *fiber.Ctx) error {
 		Expires:  time.Now().Add(-time.Hour),
 		HTTPOnly: true,
 	}
-
 	c.Cookie(&cookie)
-	return c.JSON(fiber.Map{
-		"message": "success",
-	})
+
+	return c.JSON(fiber.Map{"message": "Success."})
 }
