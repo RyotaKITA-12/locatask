@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/RyotaKITA-12/locatask.git/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -27,5 +28,5 @@ func Connect() {
 
 	DB = db
 
-	db.AutoMigrate(&models.User{}, &models.ResetPassword{}, &models.Profile{}, &models.Link{}, &models.Role{}, &models.Skill{}, models.Post{}, models.PostSkill{})
+	db.AutoMigrate(&models.User{})
 }
