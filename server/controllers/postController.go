@@ -31,8 +31,8 @@ func RegisterPost(c *fiber.Ctx) error {
 		Title:     data["title"],
 		Period:    period,
 		Address:   data["address"],
-		Longitude: res.Lat,
-		Latitude:  res.Lng,
+		Longitude: res.Lng,
+		Latitude:  res.Lat,
 	}
 
 	database.DB.Create(&post)

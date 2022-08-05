@@ -10,11 +10,6 @@
             </ul>
             <ul class="navbar-nav my-2 my-lg-0 ms-auto">
                 <li class="nav-item">
-                    <div class="nav-link">
-                        <img @click="openModal" src="./img/pen.png" height="40" border="2" style="border-radius: 0.5em">
-                    </div>
-                </li>
-                <li class="nav-item">
                     <router-link to="/login" class="nav-link" @click="logout">
                         <button class="btn btn-outline-danger">ログアウト</button>
                     </router-link>
@@ -31,11 +26,6 @@
             </ul>
             <ul class="navbar-nav my-2 my-lg-0 ms-auto">
                 <li class="nav-item">
-                    <div class="nav-link">
-                        <img @click="openModal" src="./img/pen.png" height="40" border="2" style="border-radius: 0.5em">
-                    </div>
-                </li>
-                <li class="nav-item">
                     <router-link to="/login" class="nav-link">
                         <button class="btn btn-outline-primary">ログイン</button>
                     </router-link>
@@ -47,48 +37,12 @@
                 </li>
             </ul>
             <br>
-            <div class="text-center">
-                <div id="overlay" v-show="showContent">
-                    <form @submit.prevent="submit">
-                        <div id="content" class="rounded">
-                            <button class="btn-circle btn-outline-dark " @click="closeModal">x</button>
-                            <h1 class="h1 mb-3 fw-normal text-success"><b>TASK</b></h1>
-                            <hr>
-                            <br>
-                            <div class="input-container">
-                                <label for="title" class="text-secondary"><b>タイトル</b></label>
-                                <input id="title" v-model="title" class="form-control" placeholder="ミーティング" required>
-                            </div>
-                            <br>
-                            <br>
-                            <div class="input-container">
-                                <label for="period" class="text-secondary"><b>期限</b></label>
-                                <input id="period" type="date" v-model="period"
-                                    :min="new Date().toISOString().split('T')[0]">
-                            </div>
-                            <br>
-                            <br>
-                            <div class="input-container">
-                                <label for="locate" class="text-secondary"><b>場所</b></label>
-                                <input id="locate" v-model="locate" class="form-control" placeholder="東京駅" required>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <button class="w-50 btn btn-lg btn-success" type="submit">登録する</button>
-                            <br>
-                            <br>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </template>
     </nav>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
@@ -104,20 +58,10 @@ export default {
             store.dispatch('setAuth', false)
             await router.push('/login')
         }
-        var showContent = ref(false)
-        const openModal = () => {
-            showContent.value = true
-        }
-        const closeModal = () => {
-            showContent.value = false
-        }
 
         return {
             auth,
             logout,
-            openModal,
-            showContent,
-            closeModal
         }
     }
 }
