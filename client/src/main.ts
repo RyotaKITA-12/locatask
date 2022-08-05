@@ -10,6 +10,6 @@ axios.defaults.withCredentials = true
 
 createApp(App).use(store).use(router).use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyCb7FqJb6W_n39blFQMfna9u1wUcDD-ABk',
+        key: '',
     },
 }).mount('#app')
